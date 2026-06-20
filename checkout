@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHECKOUT</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:white;
+    color:black;
+}
+
+.header{
+    text-align:center;
+    padding:30px;
+    letter-spacing:2px;
+    font-size:14px;
+}
+
+.container{
+    max-width:600px;
+    margin:80px auto;
+    padding:20px;
+}
+
+.back{
+    text-decoration:none;
+    color:black;
+    display:block;
+    margin-bottom:40px;
+    font-size:13px;
+}
+
+.row{
+    display:flex;
+    justify-content:space-between;
+    padding:16px 0;
+    border-bottom:1px solid #eee;
+}
+
+.total{
+    font-weight:bold;
+}
+
+.checkout-btn{
+    width:100%;
+    padding:16px;
+    margin-top:30px;
+    border:1px solid black;
+    background:white;
+    cursor:pointer;
+    letter-spacing:2px;
+}
+
+.message{
+    text-align:center;
+    margin-top:20px;
+    font-size:12px;
+    letter-spacing:1px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    CHECKOUT
+</div>
+
+<div class="container">
+
+    <a href="index.html" class="back">
+        ← BACK
+    </a>
+
+    <div class="row">
+        <span>COST</span>
+        <span>$0.00</span>
+    </div>
+
+    <div class="row">
+        <span>SUBTOTAL</span>
+        <span>$0.00</span>
+    </div>
+
+    <div class="row">
+        <span>TAX</span>
+        <span>$0.00</span>
+    </div>
+
+    <div class="row total">
+        <span>TOTAL</span>
+        <span>FREE</span>
+    </div>
+
+    <button
+        class="checkout-btn"
+        onclick="downloadFiles()">
+        CHECKOUT
+    </button>
+
+    <div
+        class="message"
+        id="message">
+    </div>
+
+</div>
+
+<script>
+
+function download(file){
+
+    const a =
+    document.createElement('a');
+
+    a.href = file;
+    a.download = '';
+
+    document.body.appendChild(a);
+
+    a.click();
+
+    a.remove();
+}
+
+function downloadFiles(){
+
+    document.getElementById("message")
+        .innerText =
+        "STARTING DOWNLOADS...";
+
+    const files = [
+        "40-nights.mp3",
+        "outside.mp3",
+        "yj.mp3",
+        "bulletproof.mp3",
+        "quiet.mp3"
+    ];
+
+    files.forEach((file,index)=>{
+
+        setTimeout(()=>{
+
+            download(file);
+
+        },index*500);
+
+    });
+
+    setTimeout(()=>{
+
+        document.getElementById("message")
+            .innerText =
+            "DOWNLOAD COMPLETE";
+
+    },3500);
+}
+
+</script>
+
+</body>
+</html>
